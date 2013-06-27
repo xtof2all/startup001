@@ -11,14 +11,10 @@ function is_int(value){
     } 
 }
 
+// Function that checks whether the input value is a prime
 function is_prime(n) {
-    // Check if the n is prime. 
-    if (is_int(n) == false) {
-       return false;
-    }
-
-    // Negative number till 1 are not primes.
-    if (n <= 1) {
+    // Check whether n is integer>1
+    if (is_int(n) == false || n <=  1) {
        return false;
     }
 
@@ -28,21 +24,45 @@ function is_prime(n) {
     }
 
     var divisor = 2;
-    while (divisor * divisor < n) {
+    while (divisor * divisor <= n) {
         if (n % divisor == 0) {
             return false;
         }
         divisor++;
     }
-    
-    // In this case we have hopped through all 
-    // possibilities
+   
+    // No divisions were possible, prime
     return true
 }
 
-a = 12
-if (is_prime(a) == true) {
-    console.log("the number " + a + " is a prime")
-} else {
-    console.log("the number " + a + " is not a prime.")
+// Function that outputs a the first m primes (with m the argument
+// of the function
+function first_primes(m) {
+    var primes = new Array();
+    var n = 1;
+    var collected = 0;
+    while (collected<m) {
+        if (is_prime(n)) {
+            primes[collected] = n;
+            collected++;
+        }
+        n++;
+    }
+    return primes
 }
+
+// Function to convert object to comma separated string
+function array2string(arr) {
+    if (arr.length < 1) {
+        return '';
+    }
+    var out_string = arr[0] + ''
+    for (var n=1; n < arr.length; n++) {
+        out_string += ',' + arr[n];
+    }
+    return out_string
+}
+
+var out_primes = array2string(first_primes(100));
+console.log(out_primes)
+
