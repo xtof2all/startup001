@@ -11,6 +11,11 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install -y nodejs
 
+# Version
+echo "NPN:"
 npm --version
+echo "Node:"
 node --version
+
+sudo apt-get install -y screen
 
