@@ -19,3 +19,6 @@ node --version
 
 sudo apt-get install -y screen
 
+# Install express
+npm install express
+
